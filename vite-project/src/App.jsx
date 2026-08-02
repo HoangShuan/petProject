@@ -1,14 +1,27 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
+import { ThemeModeContext } from './ThemeModeProvider'
 
 function App() {
   const [count, setCount] = useState(0)
+  const { mode, setMode } = useContext(ThemeModeContext)
 
   return (
     <>
+      <div style={{ position: 'fixed', right: 16, top: 16, zIndex: 9999 }}>
+        <label style={{ marginRight: 8 }} htmlFor="theme-select">Theme</label>
+        <select id="theme-select" value={mode} onChange={(e) => setMode(e.target.value)}>
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+          <option value="system">System</option>
+        </select>
+      </div>
+      <div>Shuan</div>
+      <button variant="text">Text</button>
+      
       <section id="center">
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
