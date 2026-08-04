@@ -1,33 +1,25 @@
-import { createTheme } from '@mui/material/styles';
-import { red } from '@mui/material/colors';
+import { teal, deepOrange, cyan, orange } from '@mui/material/colors'
+import { extendTheme } from '@mui/material/styles'
 
-export default function getTheme(mode = 'light') {
-  return createTheme({
-    cssVariables: true,
-    palette: {
-      mode,
-      primary: {
-        main: '#556cd6',
-      },
-      secondary: {
-        main: '#19857b',
-      },
-      error: {
-        main: red.A400,
-      },
-      ...(mode === 'light'
-        ? {
-            background: {
-              default: '#fafafa',
-              paper: '#fff',
-            },
-          }
-        : {
-            background: {
-              default: '#121212',
-              paper: '#1d1d1d',
-            },
-          }),
+const theme = extendTheme({
+  webCustom: {
+    appBarHeight: '48px',
+    boardBarHeight: '58px'
+  },
+  colorSchemes: {
+    light: {
+      palette: {
+        primary: teal,
+        secondary: deepOrange
+      }
     },
-  });
-}
+    dark: {
+      palette: {
+        primary: cyan,
+        secondary: orange
+      }
+    }
+  }
+})
+
+export default theme

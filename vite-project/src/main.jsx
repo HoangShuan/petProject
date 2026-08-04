@@ -1,13 +1,15 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
+import ReactDOM from 'react-dom/client'
+import { CssBaseline } from '@mui/material'
 import App from './App.jsx'
-import ThemeModeProvider from './ThemeModeProvider'
+import { CssVarsProvider } from '@mui/material/styles'
+import theme from './theme'
 
-createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ThemeModeProvider>
+    <CssVarsProvider theme={theme} colorSchemeSelector="class">
+      <CssBaseline />
       <App />
-    </ThemeModeProvider>
+    </CssVarsProvider>
   </StrictMode>,
 )
